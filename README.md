@@ -31,3 +31,25 @@
 13. A 32-bit vector can be viewed as containing 4 bytes (bits [31:24], [23:16], etc.). Build a circuit that will reverse
     the byte ordering of the 4-byte word.
     AaaaaaaaBbbbbbbbCcccccccDddddddd => DdddddddCcccccccBbbbbbbbAaaaaaaa
+14. Build a circuit that has two 3-bit inputs that computes the bitwise-OR of the two vectors, the logical-OR of the two
+    vectors, and the inverse (NOT) of both vectors. Place the inverse of b in the upper half of out_not (i.e.,
+    bits [5:3]), and the inverse of a in the lower half. ![image](img/Vectorgates.png)
+15. Build a combinational circuit with four inputs, in[3:0].\
+    There are 3 outputs:
+    * out_and: output of a 4-input AND gate.
+    * oout_or: output of a 4-input OR gate.
+    * oout_xor: output of a 4-input XOR gate.
+16. Given several input vectors, concatenate them together then split them up into several output vectors. There are six
+    5-bit input vectors: a, b, c, d, e, and f, for a total of 30 bits of input. There are four 8-bit output vectors: w,
+    x, y, and z, for 32 bits of output. The output should be a concatenation of the input vectors followed by two 1
+    bits.
+17. Given an 8-bit input vector [7:0], reverse its bit ordering.
+18. One common place to see a replication operator is when sign-extending a smaller number to a larger one, while
+    preserving its signed value. This is done by replicating the sign bit (the most significant bit) of the smaller
+    number to the left. For example, sign-extending 4'b0101 (5) to 8 bits results in 8'b00000101 (5), while
+    sign-extending 4'b1101 (-3) to 8 bits results in 8'b11111101 (-3). \
+    Build a circuit that sign-extends an 8-bit number to 32 bits. This requires a concatenation of 24 copies of the sign
+    bit (i.e., replicate bit[7] 24 times) followed by the 8-bit number itself.
+19. Given five 1-bit signals (a, b, c, d, and e), compute all 25 pairwise one-bit comparisons in the 25-bit output
+    vector. The output should be 1 if the two bits being compared are equal. ![image](img/Vector5.png)\
+    As the diagram shows, this can be done more easily using the replication and concatenation operators. 
