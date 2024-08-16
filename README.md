@@ -72,13 +72,13 @@
    name to your top-level module's ports:
 
    | Port in mod_a | Port in top_module |
-                                                                             | -------- | ------- |
-   |output out1 |	out1|
-   |output out2 |	out2|
-   |input in1 |	a|
-   |input in2 |	b|
-   |input in3 |	c|
-   | input in4 |	d|
+   |---------------|--------------------|
+   | output out1   | 	out1              |
+   | output out2   | 	out2              |
+   | input in1     | 	a                 |
+   | input in2     | 	b                 |
+   | input in3     | 	c                 |
+   | input in4     | 	d                 |
 4. You are given a module my_dff with two inputs and one output (that implements a D flip-flop). Instantiate three of
    them, then chain them together to make a shift register of length 3. The clk port needs to be connected to all
    instances. \
@@ -180,12 +180,12 @@ non-deterministic and differ between simulation and synthesized hardware.
    scancodes received, you need to indicate whether one of the arrow keys on the keyboard have been pressed. This
    involves a fairly simple mapping, which can be implemented as a case statement (or if-elseif) with four cases.
 
-   |Scancode [15:0] | Arrow key|
-         | -------- | ------- |
-   |16'he06b |left arrow|
-   |16'he072 |down arrow|
-   |16'he074 |right arrow|
-   |16'he075 |up arrow|
-   |Anything else |none|
+   | Scancode [15:0] | Arrow key   |
+   |-----------------|-------------|
+   | 16'he06b        | left arrow  |
+   | 16'he072        | down arrow  |
+   | 16'he074        | right arrow |
+   | 16'he075        | up arrow    |
+   | Anything else   | none        |
    Your circuit has one 16-bit input, and four outputs. Build this circuit that recognizes these four scancodes and
    asserts the correct output. 
