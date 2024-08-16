@@ -187,5 +187,6 @@ non-deterministic and differ between simulation and synthesized hardware.
    | 16'he074        | right arrow |
    | 16'he075        | up arrow    |
    | Anything else   | none        |
+
    Your circuit has one 16-bit input, and four outputs. Build this circuit that recognizes these four scancodes and
    asserts the correct output. 
