@@ -42,8 +42,8 @@
 5. Build a combinational circuit with four inputs, in[3:0].\
    There are 3 outputs:
     * out_and: output of a 4-input AND gate.
-    * oout_or: output of a 4-input OR gate.
-    * oout_xor: output of a 4-input XOR gate.
+    * out_or: output of a 4-input OR gate.
+    * out_xor: output of a 4-input XOR gate.
 6. Given several input vectors, concatenate them together then split them up into several output vectors. There are six
    5-bit input vectors: a, b, c, d, e, and f, for a total of 30 bits of input. There are four 8-bit output vectors: w,
    x, y, and z, for 32 bits of output. The output should be a concatenation of the input vectors followed by two 1
@@ -72,7 +72,7 @@
    name to your top-level module's ports:
 
    | Port in mod_a | Port in top_module |
-   |---------------|--------------------|
+                                 |---------------|--------------------|
    | output out1   | 	out1              |
    | output out2   | 	out2              |
    | input in1     | 	a                 |
@@ -181,7 +181,7 @@ non-deterministic and differ between simulation and synthesized hardware.
    involves a fairly simple mapping, which can be implemented as a case statement (or if-elseif) with four cases.
 
    | Scancode [15:0] | Arrow key   |
-   |-----------------|-------------|
+                                 |-----------------|-------------|
    | 16'he06b        | left arrow  |
    | 16'he072        | down arrow  |
    | 16'he074        | right arrow |
@@ -189,4 +189,37 @@ non-deterministic and differ between simulation and synthesized hardware.
    | Anything else   | none        |
 
    Your circuit has one 16-bit input, and four outputs. Build this circuit that recognizes these four scancodes and
-   asserts the correct output. 
+   asserts the correct output.
+
+### More Verilog Features
+
+1. Conditional ternary operator: Given four unsigned numbers, find the minimum. Unsigned numbers can be compared with
+   standard comparison operators (a < b). Use the conditional operator to make two-way min circuits, then compose a
+   few of them to create a 4-way min circuit. You'll probably want some wire vectors for the intermediate results.
+2. Reduction operator: Parity checking is often used as a simple method of detecting errors when transmitting data
+   through an imperfect channel. Create a circuit that will compute a parity bit for a 8-bit byte (which will add a 9th
+   bit to the byte). We will use "even" parity, where the parity bit is just the XOR of all 8 data bits.
+3. Reduction very wide gates: Build a combinational circuit with 100 inputs, in[99:0]. \
+   There are 3 outputs:
+    * out_and: output of a 100-input AND gate.
+    * out_or: output of a 100-input OR gate.
+    * out_xor: output of a 100-input XOR gate.
+4. For Loop: Given a 100-bit input vector [99:0], reverse its bit ordering.
+5. A "population count" circuit counts the number of '1's in an input vector. Build a population count circuit for a
+   255-bit input vector.
+6. Instance Array: Create a 100-bit binary ripple-carry adder by instantiating 100 full adders. The adder adds two
+   100-bit numbers and a carry-in to produce a 100-bit sum and carry out. To encourage you to actually instantiate full
+   adders, also output the carry-out from each full adder in the ripple-carry adder. cout[99] is the final carry-out
+   from the last full adder, and is the carry-out you usually see.
+7. You are provided with a BCD one-digit adder named bcd_fadd that adds two BCD digits and carry-in, and produces a sum
+   and carry-out.
+
+         module bcd_fadd (
+         input [3:0] a,
+         input [3:0] b,
+         input cin,
+         output cout,
+         output [3:0] sum );
+
+   Instantiate 100 copies of bcd_fadd to create a 100-digit BCD ripple-carry adder. Your adder should add two 100-digit
+   BCD numbers (packed into 400-bit vectors) and a carry-in to produce a 100-digit sum and carry out. 
